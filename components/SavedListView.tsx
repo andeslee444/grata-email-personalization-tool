@@ -1,8 +1,8 @@
 'use client';
 
 import { SavedList, Company } from '@/types';
-import { CompanyCard } from './CompanyCard';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CompanyTable } from './CompanyTable';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FolderOpen } from 'lucide-react';
 
 interface SavedListViewProps {
@@ -25,15 +25,10 @@ export function SavedListView({ savedList, onSelectCompany }: SavedListViewProps
         </CardHeader>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {savedList.companies.map((company) => (
-          <CompanyCard
-            key={company.id}
-            company={company}
-            onSelectOutreach={onSelectCompany}
-          />
-        ))}
-      </div>
+      <CompanyTable
+        companies={savedList.companies}
+        onSelectOutreach={onSelectCompany}
+      />
     </div>
   );
 }

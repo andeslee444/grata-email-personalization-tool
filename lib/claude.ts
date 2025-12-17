@@ -30,7 +30,7 @@ export async function generateEmailDrafts(
       const angle = EMAIL_ANGLES[i % EMAIL_ANGLES.length];
 
       const message = await anthropic.messages.create({
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'claude-3-5-sonnet-20240620',
         max_tokens: 1500,
         system: systemPrompt,
         messages: [
@@ -85,7 +85,7 @@ Please regenerate ONLY the selected section, maintaining the same overall tone a
 
   try {
     const message = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'claude-3-5-sonnet-20240620',
       max_tokens: 500,
       system: systemPrompt,
       messages: [
