@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { Company, UserContext, EmailDraft, OutreachConfig, EmailAngle } from '@/types';
+import { Company, UserContext, EmailDraft, OutreachConfig, EmailAngle, Citation, CitationSource } from '@/types';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY || '',
@@ -30,7 +30,7 @@ export async function generateEmailDrafts(
       const angle = EMAIL_ANGLES[i % EMAIL_ANGLES.length];
 
       const message = await anthropic.messages.create({
-        model: 'claude-3-5-sonnet-20240620',
+        model: 'claude-3-haiku-20240307',
         max_tokens: 1500,
         system: systemPrompt,
         messages: [
@@ -44,6 +44,14 @@ export async function generateEmailDrafts(
       const content = message.content[0];
       if (content.type === 'text') {
         const parsed = parseEmailResponse(content.text, angle, i);
+        console.log(`[${angle}] Parsed ${parsed.citations.length} citations`);
+        if (parsed.citations.length > 0) {
+          console.log('Citations:', parsed.citations.map(c => ({
+            text: c.text.substring(0, 50) + '...',
+            type: c.source.type,
+            found: c.startIndex !== -1
+          })));
+        }
         drafts.push(parsed);
       }
     }
@@ -85,7 +93,7 @@ Please regenerate ONLY the selected section, maintaining the same overall tone a
 
   try {
     const message = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20240620',
+      model: 'claude-3-haiku-20240307',
       max_tokens: 500,
       system: systemPrompt,
       messages: [
@@ -136,10 +144,22 @@ Return your response in this exact format:
 SUBJECT: [subject line]
 
 BODY:
-[email body]
+[email body with inline footnote markers like [1], [2], etc. Place the footnote marker immediately after any fact, statistic, or claim that comes from a source.]
 
-SOURCE_CITATIONS:
-[List each factual claim with its source]`;
+FOOTNOTES:
+[1] SOURCE_TYPE: [company_profile | user_upload | news | company_website] | SOURCE_NAME: [name] | DETAIL: [optional detail] | EVIDENCE: [1 sentence quote or paraphrase from source]
+[2] SOURCE_TYPE: [type] | SOURCE_NAME: [name] | DETAIL: [detail] | EVIDENCE: [evidence]
+
+Example:
+SUBJECT: Partnership Opportunity with TechCorp
+
+BODY:
+I was impressed to learn about your recent $45M Series B raise.[1] Your expansion into European markets[2] aligns well with our investment thesis in B2B software companies.[3]
+
+FOOTNOTES:
+[1] SOURCE_TYPE: news | SOURCE_NAME: Company Website - Series B Announcement | DETAIL: March 15, 2024 | EVIDENCE: TechCorp announced $45M Series B funding led by Sequoia Capital
+[2] SOURCE_TYPE: company_profile | SOURCE_NAME: Grata Company Profile | DETAIL: Strategic expansion plans | EVIDENCE: Company is expanding operations into Germany, France, and UK markets
+[3] SOURCE_TYPE: user_upload | SOURCE_NAME: Summit Capital Investment Thesis 2025 | DETAIL: B2B software focus | EVIDENCE: We focus on B2B software companies with $10-50M revenue and strong unit economics`;
 }
 
 function buildUserPrompt(
@@ -183,25 +203,70 @@ function parseEmailResponse(response: string, angle: EmailAngle, index: number):
   let subject = '';
   let body = '';
   let inBody = false;
+  let inFootnotes = false;
+  const footnotes: Map<string, CitationSource> = new Map();
 
-  for (const line of lines) {
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
     if (line.startsWith('SUBJECT:')) {
       subject = line.replace('SUBJECT:', '').trim();
     } else if (line.startsWith('BODY:')) {
       inBody = true;
-    } else if (line.startsWith('SOURCE_CITATIONS:')) {
+      inFootnotes = false;
+    } else if (line.startsWith('FOOTNOTES:')) {
       inBody = false;
-    } else if (inBody && line.trim()) {
+      inFootnotes = true;
+    } else if (inBody && !line.startsWith('FOOTNOTES:')) {
       body += line + '\n';
+    } else if (inFootnotes) {
+      // Parse footnote format: [1] SOURCE_TYPE: news | SOURCE_NAME: name | DETAIL: detail | EVIDENCE: evidence
+      const footnoteMatch = line.match(/^\[(\d+)\]\s*SOURCE_TYPE:\s*([^|]+)\s*\|\s*SOURCE_NAME:\s*([^|]+)(?:\s*\|\s*DETAIL:\s*([^|]+))?(?:\s*\|\s*EVIDENCE:\s*(.+))?/);
+
+      if (footnoteMatch) {
+        const [, number, sourceType, sourceName, sourceDetail, evidence] = footnoteMatch;
+        footnotes.set(number, {
+          type: sourceType.trim() as CitationSource['type'],
+          name: sourceName.trim(),
+          detail: sourceDetail?.trim(),
+          evidence: evidence?.trim()
+        });
+      }
     }
   }
+
+  // Now find all footnote markers in the body and create citations
+  const citations: Citation[] = [];
+  const bodyText = body.trim();
+  const footnoteRegex = /\[(\d+)\]/g;
+  let match;
+
+  while ((match = footnoteRegex.exec(bodyText)) !== null) {
+    const footnoteNumber = match[1];
+    const source = footnotes.get(footnoteNumber);
+
+    if (source) {
+      const startIndex = match.index;
+      const endIndex = match.index + match[0].length;
+
+      citations.push({
+        id: `citation-${footnoteNumber}`,
+        text: match[0], // The [1], [2], etc. marker itself
+        source,
+        startIndex,
+        endIndex
+      });
+    }
+  }
+
+  console.log(`[${angle}] Parsed ${citations.length} citations from ${footnotes.size} footnotes`);
 
   return {
     id: `draft-${index}-${Date.now()}`,
     subject: subject || 'Exploring Partnership Opportunities',
-    body: body.trim() || response,
+    body: bodyText,
     angle,
-    citations: [], // Citations parsing can be enhanced later
+    citations,
     isLocked: false,
     lockedPhrases: []
   };

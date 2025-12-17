@@ -8,15 +8,17 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Copy, Edit2, Check, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
+import { HighlightedText } from './HighlightedText';
 
 interface EmailDraftCardProps {
   draft: EmailDraft;
   onCopy: () => void;
   onEdit: (draftId: string, newSubject: string, newBody: string) => void;
   onRegenerateSelection?: (selectedText: string) => void;
+  angleIcon?: React.ReactNode;
 }
 
-export function EmailDraftCard({ draft, onCopy, onEdit, onRegenerateSelection }: EmailDraftCardProps) {
+export function EmailDraftCard({ draft, onCopy, onEdit, onRegenerateSelection, angleIcon }: EmailDraftCardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedSubject, setEditedSubject] = useState(draft.subject);
   const [editedBody, setEditedBody] = useState(draft.body);
@@ -47,36 +49,47 @@ export function EmailDraftCard({ draft, onCopy, onEdit, onRegenerateSelection }:
   };
 
   return (
-    <Card className="relative">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-        <Badge variant="secondary">{draft.angle}</Badge>
-        <div className="flex gap-2">
+    <Card className="relative h-full flex flex-col group">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <Badge variant="secondary" className="flex items-center gap-1">
+          {angleIcon}
+          {draft.angle}
+        </Badge>
+        <div className="flex gap-1">
           {!isEditing && (
             <>
               <Button
                 size="sm"
                 variant="ghost"
-                onClick={() => setIsEditing(true)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsEditing(true);
+                }}
+                className="h-7 w-7 p-0"
               >
-                <Edit2 className="h-4 w-4" />
+                <Edit2 className="h-3 w-3" />
               </Button>
               <Button
                 size="sm"
                 variant={copied ? "default" : "outline"}
-                onClick={handleCopy}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCopy();
+                }}
+                className="h-7 w-7 p-0"
               >
-                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
               </Button>
             </>
           )}
           {isEditing && (
-            <Button size="sm" onClick={handleSave}>
+            <Button size="sm" onClick={handleSave} className="h-7 text-xs px-2">
               Save
             </Button>
           )}
         </div>
       </CardHeader>
-      <CardContent className="space-y-3">
+      <CardContent className="space-y-2 flex-1 overflow-hidden">
         {isEditing ? (
           <>
             <div>
@@ -84,34 +97,45 @@ export function EmailDraftCard({ draft, onCopy, onEdit, onRegenerateSelection }:
               <Textarea
                 value={editedSubject}
                 onChange={(e) => setEditedSubject(e.target.value)}
-                className="mt-1 min-h-[40px]"
+                className="mt-1 min-h-[30px] text-xs"
                 rows={1}
               />
             </div>
-            <div>
+            <div className="flex-1">
               <label className="text-xs font-medium text-muted-foreground">Body</label>
               <Textarea
                 value={editedBody}
                 onChange={(e) => setEditedBody(e.target.value)}
-                className="mt-1 min-h-[200px]"
-                rows={10}
+                className="mt-1 h-[200px] text-xs"
+                rows={8}
               />
             </div>
           </>
         ) : (
           <>
-            <div>
+            <div
+              onClick={() => setIsEditing(true)}
+              className="cursor-pointer hover:bg-muted/30 transition-colors rounded p-2 -m-2"
+            >
               <div className="text-xs font-medium text-muted-foreground mb-1">Subject</div>
-              <div className="font-medium text-sm">{draft.subject}</div>
+              <HighlightedText
+                text={draft.subject}
+                citations={draft.citations.filter(c =>
+                  c.startIndex < draft.subject.length
+                )}
+                className="font-medium text-xs line-clamp-2"
+              />
             </div>
-            <div>
+            <div
+              onClick={() => setIsEditing(true)}
+              className="flex-1 overflow-hidden cursor-pointer hover:bg-muted/30 transition-colors rounded p-2 -m-2"
+            >
               <div className="text-xs font-medium text-muted-foreground mb-1">Body</div>
-              <div
-                className="text-sm whitespace-pre-wrap leading-relaxed select-text"
-                onMouseUp={handleTextSelection}
-              >
-                {draft.body}
-              </div>
+              <HighlightedText
+                text={draft.body}
+                citations={draft.citations}
+                className="text-xs whitespace-pre-wrap leading-relaxed select-text line-clamp-[12] overflow-hidden"
+              />
             </div>
           </>
         )}

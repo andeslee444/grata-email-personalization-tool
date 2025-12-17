@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { X, Loader2, Building2, Users, Target } from 'lucide-react';
+import { X, Loader2, Building2, Users, Target, Lightbulb, Handshake, TrendingUp, MessageCircle, Rocket, Briefcase } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -75,13 +75,32 @@ export function OutreachPanel({ company, userContexts, onClose }: OutreachPanelP
     setCopyCount(prev => prev + 1);
   };
 
+  const getAngleIcon = (angle: string) => {
+    switch (angle) {
+      case 'Strategy':
+        return <Lightbulb className="h-4 w-4" />;
+      case 'Portfolio Synergy':
+        return <Briefcase className="h-4 w-4" />;
+      case 'Relationship':
+        return <Handshake className="h-4 w-4" />;
+      case 'Market Commentary':
+        return <TrendingUp className="h-4 w-4" />;
+      case 'Growth Partnership':
+        return <Rocket className="h-4 w-4" />;
+      case 'Acquisition Interest':
+        return <Target className="h-4 w-4" />;
+      default:
+        return <MessageCircle className="h-4 w-4" />;
+    }
+  };
+
   useEffect(() => {
     // Auto-generate on mount
     handleGenerate();
   }, []);
 
   return (
-    <div className="fixed inset-y-0 right-0 w-full md:w-2/3 lg:w-1/2 bg-background border-l shadow-2xl z-50 flex flex-col">
+    <div className="fixed inset-0 bg-background z-50 flex flex-col">
       {/* Header */}
       <div className="border-b bg-card">
         <div className="p-6 space-y-4">
@@ -162,8 +181,8 @@ export function OutreachPanel({ company, userContexts, onClose }: OutreachPanelP
       </div>
 
       {/* Drafts */}
-      <ScrollArea className="flex-1">
-        <div className="p-6 space-y-4">
+      <div className="flex-1 overflow-y-auto">
+        <div className="p-6">
           {isLoading && drafts.length === 0 && (
             <Card>
               <CardContent className="flex flex-col items-center justify-center py-12">
@@ -177,19 +196,22 @@ export function OutreachPanel({ company, userContexts, onClose }: OutreachPanelP
 
           {drafts.length > 0 && (
             <>
-              <div className="flex items-center justify-between">
-                <h3 className="font-semibold">Generated Drafts</h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="font-semibold text-lg">Generated Drafts</h3>
                 <Badge variant="outline">{drafts.length} variations</Badge>
               </div>
 
-              {drafts.map((draft) => (
-                <EmailDraftCard
-                  key={draft.id}
-                  draft={draft}
-                  onCopy={handleCopyDraft}
-                  onEdit={handleEditDraft}
-                />
-              ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {drafts.map((draft) => (
+                  <EmailDraftCard
+                    key={draft.id}
+                    draft={draft}
+                    onCopy={handleCopyDraft}
+                    onEdit={handleEditDraft}
+                    angleIcon={getAngleIcon(draft.angle)}
+                  />
+                ))}
+              </div>
             </>
           )}
 
@@ -204,7 +226,7 @@ export function OutreachPanel({ company, userContexts, onClose }: OutreachPanelP
             </Card>
           )}
         </div>
-      </ScrollArea>
+      </div>
     </div>
   );
 }

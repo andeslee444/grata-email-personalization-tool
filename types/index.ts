@@ -80,6 +80,7 @@ export interface CitationSource {
   type: 'company_profile' | 'user_upload' | 'news' | 'company_website';
   name: string;
   detail?: string;
+  evidence?: string; // Brief excerpt or quote from the source
 }
 
 export interface LockedPhrase {
