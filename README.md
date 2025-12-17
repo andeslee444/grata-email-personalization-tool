@@ -1,0 +1,1 @@
+# Grata Email Personalization Tool
