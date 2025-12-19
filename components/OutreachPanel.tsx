@@ -33,6 +33,37 @@ export function OutreachPanel({ company, userContexts, onClose }: OutreachPanelP
   });
   const [copyCount, setCopyCount] = useState(0);
 
+  // Helper function to get recipient options from company management
+  const getRecipientOptions = () => {
+    const recipientMap: Record<string, { titles: string[], label: string }> = {
+      'founder': { titles: ['Founder', 'Co-Founder'], label: 'Founder' },
+      'ceo': { titles: ['CEO'], label: 'CEO' },
+      'cfo': { titles: ['CFO'], label: 'CFO' },
+      'business_lead': { titles: ['VP', 'COO', 'CTO', 'Chief'], label: 'Business Lead' }
+    };
+
+    const options: Array<{ value: string, label: string, name: string, title: string }> = [];
+
+    Object.entries(recipientMap).forEach(([value, { titles, label }]) => {
+      const recipient = company.management.find(m =>
+        titles.some(title => m.title.includes(title))
+      );
+
+      if (recipient) {
+        options.push({
+          value,
+          label,
+          name: recipient.name,
+          title: recipient.title
+        });
+      }
+    });
+
+    return options;
+  };
+
+  const recipientOptions = getRecipientOptions();
+
   const handleGenerate = async () => {
     setIsLoading(true);
     try {
@@ -149,13 +180,27 @@ export function OutreachPanel({ company, userContexts, onClose }: OutreachPanelP
                 onValueChange={(value: any) => setConfig(prev => ({ ...prev, recipientPersona: value }))}
               >
                 <SelectTrigger>
-                  <SelectValue />
+                  <SelectValue>
+                    {(() => {
+                      const selected = recipientOptions.find(opt => opt.value === config.recipientPersona);
+                      return selected ? (
+                        <div className="flex items-baseline gap-2">
+                          <span className="font-medium">{selected.name}</span>
+                          <span className="text-xs text-muted-foreground">• {selected.title}</span>
+                        </div>
+                      ) : 'Select recipient';
+                    })()}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="founder">Founder</SelectItem>
-                  <SelectItem value="ceo">CEO</SelectItem>
-                  <SelectItem value="cfo">CFO</SelectItem>
-                  <SelectItem value="business_lead">Business Lead</SelectItem>
+                  {recipientOptions.map(option => (
+                    <SelectItem key={option.value} value={option.value}>
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-medium">{option.name}</span>
+                        <span className="text-xs text-muted-foreground">• {option.title}</span>
+                      </div>
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
