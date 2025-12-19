@@ -25,6 +25,10 @@ export interface ManagementMember {
   name: string;
   title: string;
   linkedIn?: string;
+  background?: string; // Previous experience, education
+  interests?: string[]; // Professional interests, focus areas
+  recentActivity?: string; // Recent posts, speaking engagements, etc.
+  tenure?: string; // How long at the company
 }
 
 export interface StrategicSignal {

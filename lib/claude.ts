@@ -123,7 +123,8 @@ function buildSystemPrompt(config: OutreachConfig): string {
 2. CREDIBLE: Every factual claim must be directly supported by provided data sources
 3. CONCISE: Get to the point quickly while maintaining professionalism
 4. PERSONALIZED: Reference specific company details, recent news, or strategic initiatives
-5. APPROPRIATE TO CONTEXT: Match the tone to the objective (${config.objective}) and recipient (${config.recipientPersona})
+5. RECIPIENT-FOCUSED: Tailor the message to the specific recipient's background, interests, and recent activities
+6. APPROPRIATE TO CONTEXT: Match the tone to the objective (${config.objective}) and recipient (${config.recipientPersona})
 
 CRITICAL RULES:
 - NEVER make up facts or statistics not present in the provided data
@@ -167,6 +168,19 @@ function buildUserPrompt(
   userContexts: UserContext[],
   config: OutreachConfig
 ): string {
+  // Find the specific recipient based on the persona
+  const recipientMap: Record<string, string[]> = {
+    'founder': ['Founder', 'Co-Founder'],
+    'ceo': ['CEO'],
+    'cfo': ['CFO'],
+    'business_lead': ['VP', 'COO', 'CTO', 'Chief']
+  };
+
+  const targetTitles = recipientMap[config.recipientPersona] || ['CEO'];
+  const recipient = company.management.find(m =>
+    targetTitles.some(title => m.title.includes(title))
+  ) || company.management[0];
+
   return `
 TARGET COMPANY PROFILE:
 Name: ${company.name}
@@ -174,7 +188,15 @@ Description: ${company.description}
 Industry: ${company.industry}
 Geography: ${company.geography}
 
-Management Team:
+EMAIL RECIPIENT:
+Name: ${recipient.name}
+Title: ${recipient.title}
+${recipient.background ? `Background: ${recipient.background}` : ''}
+${recipient.interests && recipient.interests.length > 0 ? `Professional Interests: ${recipient.interests.join(', ')}` : ''}
+${recipient.recentActivity ? `Recent Activity: ${recipient.recentActivity}` : ''}
+${recipient.tenure ? `Tenure: ${recipient.tenure}` : ''}
+
+Full Management Team:
 ${company.management.map(m => `- ${m.name}, ${m.title}`).join('\n')}
 
 Recent News:
