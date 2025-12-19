@@ -64,7 +64,7 @@ export const mockCompanies: Company[] = [
             engagement: '156 likes, 64 comments'
           }
         ]
-      },
+      },,
       {
         id: '1-cfo',
         name: 'Michael Torres',
@@ -113,7 +113,7 @@ export const mockCompanies: Company[] = [
             engagement: '198 likes, 41 comments'
           }
         ]
-      },
+      },,
       {
         id: '2-cfo',
         name: 'Emily Watson',
@@ -162,7 +162,7 @@ export const mockCompanies: Company[] = [
             engagement: '567 likes, 98 comments'
           }
         ]
-      },
+      },,
       {
         id: '3-cfo',
         name: 'David Park',
@@ -193,8 +193,25 @@ export const mockCompanies: Company[] = [
         background: 'Former CISO at JPMorgan Chase, 20 years in enterprise security',
         interests: ['Zero-trust architecture', 'Compliance automation', 'Security as a service'],
         recentActivity: 'Announced AWS partnership at re:Invent, expanding EU presence',
-        tenure: '8 years (founded 2017)'
-      },
+        tenure: '8 years (founded 2017)',
+        linkedInActivity: [
+          {
+            date: '2025-11-22',
+            content: 'Excited to announce our partnership with AWS! DataVault is now available on AWS Marketplace, bringing zero-trust security to thousands of enterprises. This is a game-changer for cloud security.',
+            engagement: '567 likes, 94 comments'
+          },
+          {
+            date: '2025-11-14',
+            content: 'We just crossed $50M ARR! Grateful to our customers who trust us to protect their most critical assets. Zero-trust isn\'t just a buzzword—it\'s a necessity in today\'s threat landscape.',
+            engagement: '892 likes, 156 comments'
+          },
+          {
+            date: '2025-11-05',
+            content: 'Opening our EU headquarters in London next month. As data privacy regulations evolve, having local presence is critical. We\'re hiring across security engineering and compliance.',
+            engagement: '423 likes, 67 comments'
+          }
+        ]
+      },,
       {
         id: '4-cfo',
         name: 'Rachel Levine',
@@ -225,8 +242,25 @@ export const mockCompanies: Company[] = [
         background: 'Former VP Retail at Square, expertise in omnichannel commerce',
         interests: ['Retail innovation', 'Omnichannel strategy', 'SMB empowerment'],
         recentActivity: 'Announced Shopify integration, keynote at NRF Big Show',
-        tenure: '6 years (founded 2019)'
-      },
+        tenure: '6 years (founded 2019)',
+        linkedInActivity: [
+          {
+            date: '2025-11-19',
+            content: 'Big news! RetailOS now integrates seamlessly with Shopify. Retailers can now sync inventory across 10,000+ stores in real-time. The future of omnichannel is here.',
+            engagement: '734 likes, 128 comments'
+          },
+          {
+            date: '2025-11-09',
+            content: 'Thrilled to be keynoting at NRF Big Show next month! Will be sharing how we\'ve helped 10,000+ retailers transform their operations. The retail revolution is powered by great software.',
+            engagement: '456 likes, 72 comments'
+          },
+          {
+            date: '2025-10-28',
+            content: 'We just doubled our engineering team! If you\'re passionate about retail tech and want to build tools that empower SMBs, we\'re hiring across the stack.',
+            engagement: '298 likes, 89 comments'
+          }
+        ]
+      },,
       {
         id: '5-cfo',
         name: 'Thomas Reynolds',
@@ -258,8 +292,25 @@ export const mockCompanies: Company[] = [
         background: 'Former VP Payments at Stripe, MBA from Wharton',
         interests: ['B2B payments innovation', 'Cross-border transactions', 'API-first platforms'],
         recentActivity: 'Announced $60M Series B and Canada expansion at FinTech Connect',
-        tenure: '7 years (founded 2018)'
-      },
+        tenure: '7 years (founded 2018)',
+        linkedInActivity: [
+          {
+            date: '2025-11-17',
+            content: 'Thrilled to announce our $60M Series B and expansion into Canada! FinSync now processes $5B annually across North America. The future of B2B payments is API-first.',
+            engagement: '1,124 likes, 203 comments'
+          },
+          {
+            date: '2025-11-07',
+            content: 'Cross-border payments are still too slow and expensive. That\'s why we built our new rails to enable same-day settlement internationally. Game-changing for B2B commerce.',
+            engagement: '687 likes, 134 comments'
+          },
+          {
+            date: '2025-10-25',
+            content: 'Speaking at FinTech Connect next week on the future of B2B payments. Would love to connect with others thinking about API-first payment infrastructure.',
+            engagement: '412 likes, 56 comments'
+          }
+        ]
+      },,
       {
         id: '6-cfo',
         name: 'Lisa Chang',
@@ -290,8 +341,25 @@ export const mockCompanies: Company[] = [
         background: 'Former Chief Learning Officer at LinkedIn Learning, PhD in Education Technology',
         interests: ['Corporate learning', 'AI in education', 'Skills development'],
         recentActivity: 'Launched AI tutor feature, speaking at ATD International Conference',
-        tenure: '5 years (founded 2020)'
-      },
+        tenure: '5 years (founded 2020)',
+        linkedInActivity: [
+          {
+            date: '2025-11-21',
+            content: 'Just launched our AI tutor feature! Corporate learners can now get personalized coaching 24/7. Early results show 3x improvement in course completion rates. AI is transforming L&D.',
+            engagement: '923 likes, 187 comments'
+          },
+          {
+            date: '2025-11-11',
+            content: 'Proud to share we\'re now serving 500+ enterprise customers and growing 200% YoY. The demand for better corporate learning solutions has never been higher.',
+            engagement: '645 likes, 112 comments'
+          },
+          {
+            date: '2025-10-30',
+            content: 'Speaking at ATD International Conference next month on "AI-Powered Learning at Scale". Would love to connect with fellow L&D leaders working on this transformation.',
+            engagement: '387 likes, 64 comments'
+          }
+        ]
+      },,
       {
         id: '7-cfo',
         name: 'Kevin Zhang',
@@ -313,8 +381,25 @@ export const mockCompanies: Company[] = [
         background: 'Third-generation farmer, BS in Agricultural Engineering from Iowa State',
         interests: ['Precision agriculture', 'Sustainable farming', 'IoT deployment'],
         recentActivity: 'Announced John Deere partnership, closed $25M Series A',
-        tenure: '6 years (founded 2019)'
-      },
+        tenure: '6 years (founded 2019)',
+        linkedInActivity: [
+          {
+            date: '2025-11-16',
+            content: 'Excited to announce our partnership with John Deere! AgriSmart is now integrated with their equipment, bringing precision agriculture to 50,000+ acres. This is farming\'s future.',
+            engagement: '1,567 likes, 298 comments'
+          },
+          {
+            date: '2025-11-06',
+            content: 'Just closed our $25M Series A! As a third-generation farmer, I never imagined building a tech company. But sustainable farming needs better data—and that\'s exactly what we\'re delivering.',
+            engagement: '892 likes, 167 comments'
+          },
+          {
+            date: '2025-10-27',
+            content: 'Our IoT sensors are helping farmers reduce water usage by 30% while increasing yields. Technology and sustainability can go hand in hand. Proud of what we\'re building.',
+            engagement: '634 likes, 89 comments'
+          }
+        ]
+      },,
       {
         id: '8-cfo',
         name: 'Michelle Barnes',
@@ -345,8 +430,25 @@ export const mockCompanies: Company[] = [
         background: 'Former Director of Engineering at HashiCorp, pioneered DevOps automation',
         interests: ['Cloud cost optimization', 'DevOps culture', 'Infrastructure as code'],
         recentActivity: 'Raised $70M Series C, managing $500M+ in customer cloud spend',
-        tenure: '7 years (founded 2018)'
-      },
+        tenure: '7 years (founded 2018)',
+        linkedInActivity: [
+          {
+            date: '2025-11-20',
+            content: 'CloudOps just raised $70M Series C! We now manage $500M+ in cloud spend for enterprises. The FinOps movement is real, and we\'re leading the charge on cost optimization.',
+            engagement: '1,234 likes, 234 comments'
+          },
+          {
+            date: '2025-11-13',
+            content: 'Hiring 50+ engineers! If you\'re passionate about infrastructure automation and want to work on problems at massive scale, DM me. We\'re building the future of cloud operations.',
+            engagement: '876 likes, 189 comments'
+          },
+          {
+            date: '2025-11-02',
+            content: 'Infrastructure as Code isn\'t enough anymore. You need automated cost optimization, security compliance, and governance at scale. That\'s what we\'re building at CloudOps.',
+            engagement: '543 likes, 97 comments'
+          }
+        ]
+      },,
       {
         id: '9-cfo',
         name: 'Steven Wu',
@@ -377,8 +479,25 @@ export const mockCompanies: Company[] = [
         background: 'Former COO at Cardinal Health, MBA and MD from Penn',
         interests: ['Healthcare supply chain', 'Cost reduction', 'Hospital operations'],
         recentActivity: 'Expanding to 100+ hospital systems, launching EU operations',
-        tenure: '8 years (founded 2017)'
-      },
+        tenure: '8 years (founded 2017)',
+        linkedInActivity: [
+          {
+            date: '2025-11-19',
+            content: 'MedSupply Chain now serves 100+ hospital systems! We\'ve helped reduce medical device costs by an average of 30%. Healthcare deserves better supply chain efficiency.',
+            engagement: '678 likes, 134 comments'
+          },
+          {
+            date: '2025-11-09',
+            content: 'Excited to announce our EU expansion! Opening operations in London and Frankfurt to bring our supply chain optimization to European hospitals. Healthcare is global.',
+            engagement: '512 likes, 87 comments'
+          },
+          {
+            date: '2025-10-29',
+            content: 'As both a physician and supply chain expert, I see daily how inefficiencies hurt patient care. That\'s why we built MedSupply—to make healthcare better through smarter operations.',
+            engagement: '823 likes, 156 comments'
+          }
+        ]
+      },,
       {
         id: '10-cfo',
         name: 'James O\'Connor',
@@ -401,8 +520,25 @@ export const mockCompanies: Company[] = [
         background: 'Former Managing Director at CBRE Tech, MBA from Columbia',
         interests: ['Commercial real estate', 'PropTech innovation', 'AI in real estate'],
         recentActivity: 'Launched AI valuation tool, raised $45M Series B from Andreessen Horowitz',
-        tenure: '6 years (founded 2019)'
-      },
+        tenure: '6 years (founded 2019)',
+        linkedInActivity: [
+          {
+            date: '2025-11-23',
+            content: 'Thrilled to announce our $45M Series B led by Andreessen Horowitz! Our AI valuation tool now covers 25M+ properties. The future of commercial real estate is data-driven.',
+            engagement: '1,456 likes, 287 comments'
+          },
+          {
+            date: '2025-11-14',
+            content: 'Just launched our AI-powered valuation tool. It analyzes thousands of data points in seconds to provide accurate property valuations. PropTech is transforming CRE.',
+            engagement: '934 likes, 178 comments'
+          },
+          {
+            date: '2025-11-03',
+            content: 'Commercial real estate needs better data infrastructure. That\'s why we built a platform that gives investors real-time insights on 25M+ properties. Game-changing for the industry.',
+            engagement: '612 likes, 94 comments'
+          }
+        ]
+      },,
       {
         id: '11-cfo',
         name: 'Gregory Martinez',
@@ -545,7 +681,25 @@ export const mockCompanies: Company[] = [
         interests: ['Talent acquisition', 'AI recruiting', 'People analytics'],
         recentActivity: 'Launched AI matching engine, raised $40M Series B from Sequoia',
         tenure: '6 years (founded 2019)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-19',
+            content: 'HR Talent Suite raised $40M Series B from Sequoia! Our AI matching engine now serves 10,000+ companies. The future of recruiting is intelligent automation.',
+            engagement: '1,345 likes, 267 comments'
+          },
+          {
+            date: '2025-11-10',
+            content: 'Just launched our AI matching engine—it\'s like having a top recruiter working 24/7. Early customers report 50% faster time-to-hire. Talent acquisition will never be the same.',
+            engagement: '876 likes, 154 comments'
+          },
+          {
+            date: '2025-11-01',
+            content: 'We\'re democratizing access to top recruiting tech. 10,000+ companies now use our platform, from startups to Fortune 500. Excited for what\'s next!',
+            engagement: '654 likes, 98 comments'
+          }
+        ]
+      },,
       {
         id: '16-cfo',
         name: 'Nathan Cooper',
@@ -568,7 +722,25 @@ export const mockCompanies: Company[] = [
         interests: ['SMB security', 'Managed services', 'Security compliance'],
         recentActivity: 'Achieved SOC 2 Type II certification, protecting 5,000+ SMBs',
         tenure: '7 years (founded 2018)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-18',
+            content: 'CyberGuard Pro achieved SOC 2 Type II certification! We now protect 5,000+ SMBs with enterprise-grade security. Security shouldn\'t be just for large enterprises.',
+            engagement: '789 likes, 134 comments'
+          },
+          {
+            date: '2025-11-09',
+            content: 'Expanding to EMEA! SMBs everywhere deserve access to managed security services. Our 24/7 SOC is now going global.',
+            engagement: '567 likes, 87 comments'
+          },
+          {
+            date: '2025-10-30',
+            content: 'After 22 years in enterprise security, I founded CyberGuard to bring that same protection to SMBs. $26M ARR proves the market needs this.',
+            engagement: '445 likes, 67 comments'
+          }
+        ]
+      },,
       {
         id: '17-cfo',
         name: 'Priya Desai',
@@ -600,7 +772,25 @@ export const mockCompanies: Company[] = [
         interests: ['Supply chain visibility', 'Real-time tracking', 'Logistics optimization'],
         recentActivity: 'Launched real-time tracking, raised $35M from Maersk Growth',
         tenure: '6 years (founded 2019)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-17',
+            content: 'SupplyChain Vision raised $35M and launched real-time tracking! We now monitor $2B+ in shipments. Visibility is the future of logistics.',
+            engagement: '1,023 likes, 189 comments'
+          },
+          {
+            date: '2025-11-08',
+            content: 'After 20 years at FedEx, I knew supply chain visibility was broken. That\'s why we built end-to-end tracking that actually works. No more black boxes.',
+            engagement: '734 likes, 128 comments'
+          },
+          {
+            date: '2025-10-29',
+            content: 'Real-time tracking just went live! Shippers can now see exactly where their $2B+ in goods are at any moment. Game-changing for supply chain management.',
+            engagement: '612 likes, 94 comments'
+          }
+        ]
+      },,
       {
         id: '18-cfo',
         name: 'Brian Walsh',
@@ -623,7 +813,25 @@ export const mockCompanies: Company[] = [
         interests: ['Smart grid technology', 'Renewable integration', 'Grid reliability'],
         recentActivity: 'Announced GE partnership, powering 2M+ homes with smart grid',
         tenure: '9 years (founded 2016)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-16',
+            content: 'Thrilled to announce our partnership with GE! EnergySmart Grid now powers 2M+ homes and reduces outages by 60%. The smart grid revolution is here.',
+            engagement: '1,567 likes, 312 comments'
+          },
+          {
+            date: '2025-11-07',
+            content: 'Smart grid technology isn\'t future-tech anymore—it\'s here. We\'ve proven we can cut outages by 60% while integrating more renewables. Utilities take note.',
+            engagement: '923 likes, 178 comments'
+          },
+          {
+            date: '2025-10-28',
+            content: 'After spending 25 years in grid operations, I started EnergySmart to fix the problems I saw every day. 2M+ homes later, we\'re making a real difference.',
+            engagement: '678 likes, 112 comments'
+          }
+        ]
+      },,
       {
         id: '19-cfo',
         name: 'Maria Hernandez',
@@ -655,7 +863,25 @@ export const mockCompanies: Company[] = [
         interests: ['Marketing attribution', 'Growth marketing', 'MarTech stack integration'],
         recentActivity: 'Raised $50M Series B, integrated with Google, Meta, and LinkedIn',
         tenure: '7 years (founded 2018)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-15',
+            content: 'MarketingOS raised $50M Series B! We now serve 5,000+ marketers with true attribution across all platforms. No more marketing in the dark.',
+            engagement: '1,234 likes, 245 comments'
+          },
+          {
+            date: '2025-11-06',
+            content: 'Just integrated with Google, Meta, and LinkedIn! MarketingOS now provides unified attribution across the entire ad ecosystem. This is what marketers have been waiting for.',
+            engagement: '845 likes, 156 comments'
+          },
+          {
+            date: '2025-10-27',
+            content: 'Attribution has been marketing\'s unsolved problem for decades. Not anymore. Our platform finally shows marketers exactly what\'s driving ROI.',
+            engagement: '589 likes, 98 comments'
+          }
+        ]
+      },,
       {
         id: '20-cfo',
         name: 'Ryan Miller',
@@ -679,7 +905,25 @@ export const mockCompanies: Company[] = [
         interests: ['Construction technology', 'Project efficiency', 'Mobile-first tools'],
         recentActivity: 'Launched mobile app, managing 1,000+ active projects',
         tenure: '6 years (founded 2019)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-14',
+            content: 'ConstructTech Suite now manages 1,000+ active projects! We\'ve reduced construction delays by 35% through better project management. The industry is finally going digital.',
+            engagement: '678 likes, 123 comments'
+          },
+          {
+            date: '2025-11-05',
+            content: 'Just launched our mobile app! Contractors can now manage projects from the field. After 18 years in construction, I know how game-changing this is.',
+            engagement: '456 likes, 78 comments'
+          },
+          {
+            date: '2025-10-26',
+            content: 'Construction delays cost billions annually. Our platform cuts that by 35% through better coordination and real-time updates. Tech is transforming construction.',
+            engagement: '389 likes, 56 comments'
+          }
+        ]
+      },,
       {
         id: '21-cfo',
         name: 'Sarah Johnson',
@@ -702,7 +946,25 @@ export const mockCompanies: Company[] = [
         interests: ['Financial automation', 'FP&A best practices', 'Enterprise finance'],
         recentActivity: 'Raised $30M Series A from Bessemer, serving 500+ finance teams',
         tenure: '5 years (founded 2020)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-13',
+            content: 'FinanceFlow raised $30M Series A from Bessemer! We now serve 500+ finance teams and cut close time by 50%. FP&A automation is the future of finance.',
+            engagement: '892 likes, 167 comments'
+          },
+          {
+            date: '2025-11-04',
+            content: 'After years as VP of FP&A at Workday, I saw the same manual processes everywhere. That\'s why we built FinanceFlow—to automate what shouldn\'t be manual.',
+            engagement: '634 likes, 112 comments'
+          },
+          {
+            date: '2025-10-25',
+            content: 'Our customers are closing their books 50% faster. Finance teams shouldn\'t spend weeks on manual consolidation. Automation unlocks strategic value.',
+            engagement: '478 likes, 89 comments'
+          }
+        ]
+      },,
       {
         id: '22-cfo',
         name: 'David Liu',
@@ -725,7 +987,25 @@ export const mockCompanies: Company[] = [
         interests: ['Telehealth innovation', 'Specialty care access', 'Rural healthcare'],
         recentActivity: 'Announced Mayo Clinic partnership, 2M+ patient visits completed',
         tenure: '7 years (founded 2018)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-12',
+            content: 'TeleMed Connect partnership with Mayo Clinic is live! We\'ve completed 2M+ patient visits and are now expanding to rural markets. Healthcare access for all.',
+            engagement: '1,456 likes, 289 comments'
+          },
+          {
+            date: '2025-11-03',
+            content: 'Published our latest whitepaper on specialty telemedicine. Early data shows patients in rural areas get care 10x faster. This is why we built TeleMed.',
+            engagement: '823 likes, 145 comments'
+          },
+          {
+            date: '2025-10-24',
+            content: 'As a physician, I saw too many patients who couldn\'t access specialty care. Telemedicine isn\'t just convenient—it\'s life-changing for underserved communities.',
+            engagement: '967 likes, 178 comments'
+          }
+        ]
+      },,
       {
         id: '23-cfo',
         name: 'Karen Thompson',
@@ -748,7 +1028,25 @@ export const mockCompanies: Company[] = [
         interests: ['Fleet optimization', 'Telematics', 'Sustainability'],
         recentActivity: 'Launched AI routing engine, managing 50,000+ vehicles',
         tenure: '8 years (founded 2017)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-11',
+            content: 'AutoFleet Manager now optimizes 50,000+ vehicles! Our AI routing engine reduces fuel costs by 20%. Fleet management just entered the AI era.',
+            engagement: '789 likes, 134 comments'
+          },
+          {
+            date: '2025-11-02',
+            content: 'Just launched our AI routing engine! After 25 years in fleet management, I\'ve never seen technology deliver 20% cost savings this consistently.',
+            engagement: '567 likes, 98 comments'
+          },
+          {
+            date: '2025-10-23',
+            content: 'Managing a fleet shouldn\'t be guesswork. Our telematics platform gives real-time visibility into every vehicle, driver, and route. Data-driven fleet management.',
+            engagement: '445 likes, 67 comments'
+          }
+        ]
+      },,
       {
         id: '24-cfo',
         name: 'Michelle Lee',
@@ -771,7 +1069,25 @@ export const mockCompanies: Company[] = [
         interests: ['Data infrastructure', 'Cloud data warehousing', 'Enterprise data strategy'],
         recentActivity: 'Raised $65M Series C from Sequoia, processing 100TB+ daily',
         tenure: '7 years (founded 2018)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-10',
+            content: 'DataLake Pro raised $65M Series C from Sequoia! We now process 100TB+ daily for Fortune 500 customers. The future of data infrastructure is here.',
+            engagement: '1,567 likes, 312 comments'
+          },
+          {
+            date: '2025-11-01',
+            content: 'After years building BigQuery at Google, I started DataLake to make enterprise-grade data warehousing accessible. Processing 100TB+ daily proves the need.',
+            engagement: '1,123 likes, 234 comments'
+          },
+          {
+            date: '2025-10-22',
+            content: 'Data warehousing is transforming. Cloud-native, consumption-priced, infinitely scalable. That\'s what Fortune 500 companies need, and that\'s what we deliver.',
+            engagement: '876 likes, 156 comments'
+          }
+        ]
+      },,
       {
         id: '25-cfo',
         name: 'Jason Park',
@@ -804,7 +1120,25 @@ export const mockCompanies: Company[] = [
         interests: ['Social media analytics', 'Sentiment AI', 'Brand intelligence'],
         recentActivity: 'Raised $25M Series A from Insight Partners, 95% AI accuracy',
         tenure: '5 years (founded 2020)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-09',
+            content: 'SocialListening AI raised $25M! We now monitor 50M+ posts daily with 95% sentiment accuracy. Social intelligence at scale.',
+            engagement: '892 likes, 167 comments'
+          },
+          {
+            date: '2025-10-31',
+            content: 'Our AI achieves 95% sentiment accuracy across 50M+ posts daily. That\'s not just better analytics—it\'s a competitive advantage for brands.',
+            engagement: '678 likes, 123 comments'
+          },
+          {
+            date: '2025-10-21',
+            content: 'After pioneering social analytics at Sprinklr, I knew AI could transform brand intelligence. We\'re proving it with unprecedented accuracy.',
+            engagement: '534 likes, 89 comments'
+          }
+        ]
+      },,
       {
         id: '26-cfo',
         name: 'Carlos Mendez',
@@ -827,7 +1161,25 @@ export const mockCompanies: Company[] = [
         interests: ['Regulatory compliance', 'Financial automation', 'RegTech innovation'],
         recentActivity: 'Serving 300+ financial institutions, expanding to EU markets',
         tenure: '7 years (founded 2018)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-08',
+            content: 'ComplianceGuard now serves 300+ financial institutions! We cut compliance costs by 60% through automation. RegTech is transforming finance.',
+            engagement: '789 likes, 145 comments'
+          },
+          {
+            date: '2025-10-30',
+            content: 'As former Chief Compliance Officer at Bank of America, I lived through manual compliance hell. That\'s why we built automation that actually works.',
+            engagement: '634 likes, 112 comments'
+          },
+          {
+            date: '2025-10-20',
+            content: 'Announcing our EU expansion! Financial institutions globally deserve better compliance tools. 60% cost reduction speaks for itself.',
+            engagement: '478 likes, 78 comments'
+          }
+        ]
+      },,
       {
         id: '27-cfo',
         name: 'Angela Kim',
@@ -850,7 +1202,25 @@ export const mockCompanies: Company[] = [
         interests: ['Hybrid workplace', 'Office utilization', 'Employee experience'],
         recentActivity: 'Raised $40M Series B from JLL Spark, managing 10M+ sq ft',
         tenure: '5 years (founded 2020)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-07',
+            content: 'WorkSpace Flex raised $40M Series B from JLL Spark! We now manage 10M+ sq ft for 2,000+ companies. The hybrid workplace is here to stay.',
+            engagement: '1,234 likes, 245 comments'
+          },
+          {
+            date: '2025-10-29',
+            content: 'Hybrid work isn\'t a trend—it\'s the new normal. That\'s why we built tools to optimize office utilization. 2,000+ companies agree.',
+            engagement: '845 likes, 156 comments'
+          },
+          {
+            date: '2025-10-19',
+            content: 'After years at WeWork, I saw the need for smarter workplace management. Now we\'re helping companies optimize 10M+ sq ft of space.',
+            engagement: '567 likes, 98 comments'
+          }
+        ]
+      },,
       {
         id: '28-cfo',
         name: 'Rachel Green',
@@ -873,7 +1243,25 @@ export const mockCompanies: Company[] = [
         interests: ['Lab automation', 'Research efficiency', 'Life sciences IT'],
         recentActivity: 'Serving 500+ research labs, FDA compliance achieved',
         tenure: '8 years (founded 2017)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-06',
+            content: 'BioTech Analytics now serves 500+ research labs! We\'ve accelerated R&D by 40% and achieved FDA compliance. Life sciences tech is critical.',
+            engagement: '892 likes, 167 comments'
+          },
+          {
+            date: '2025-10-28',
+            content: 'FDA compliance achieved! Our platform now helps 500+ labs move faster while staying compliant. This is what life sciences tech should be.',
+            engagement: '678 likes, 123 comments'
+          },
+          {
+            date: '2025-10-18',
+            content: 'After years in R&D at Illumina, I knew lab workflows were broken. Accelerating R&D by 40% proves better software makes better science.',
+            engagement: '534 likes, 89 comments'
+          }
+        ]
+      },,
       {
         id: '29-cfo',
         name: 'Jonathan Wright',
@@ -896,7 +1284,25 @@ export const mockCompanies: Company[] = [
         interests: ['Customer success operations', 'Churn reduction', 'CS automation'],
         recentActivity: 'Raised $35M Series A from Battery Ventures, serving 3,000+ CS teams',
         tenure: '6 years (founded 2019)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-05',
+            content: 'CustomerSuccess Hub raised $35M from Battery Ventures! 3,000+ CS teams now use our platform and reduce churn by 45%. Customer success is revenue.',
+            engagement: '1,123 likes, 212 comments'
+          },
+          {
+            date: '2025-10-27',
+            content: '45% churn reduction isn\'t magic—it\'s data-driven customer success. Our platform gives CS teams the insights they need to drive retention.',
+            engagement: '823 likes, 145 comments'
+          },
+          {
+            date: '2025-10-17',
+            content: 'After pioneering CS methodologies at Gainsight, I built CustomerSuccess Hub to make best practices accessible to every CS team.',
+            engagement: '634 likes, 98 comments'
+          }
+        ]
+      },,
       {
         id: '30-cfo',
         name: 'William Chen',
@@ -920,7 +1326,25 @@ export const mockCompanies: Company[] = [
         interests: ['Omnichannel retail', 'Inventory optimization', 'SMB retail'],
         recentActivity: 'Serving 5,000+ retailers with real-time inventory sync',
         tenure: '5 years (founded 2020)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-04',
+            content: 'InventoryFlow now serves 5,000+ retailers with real-time multi-channel sync! Growing 180% YoY. Retail tech is having its moment.',
+            engagement: '789 likes, 134 comments'
+          },
+          {
+            date: '2025-10-26',
+            content: 'Real-time inventory sync across channels shouldn\'t be hard. That\'s why 5,000+ retailers trust InventoryFlow. Growing 180% YoY.',
+            engagement: '567 likes, 98 comments'
+          },
+          {
+            date: '2025-10-16',
+            content: 'After years at BigCommerce, I saw retailers struggle with inventory management. Now we\'re solving it for 5,000+ stores.',
+            engagement: '445 likes, 67 comments'
+          }
+        ]
+      },,
       {
         id: '31-cfo',
         name: 'Diana Lopez',
@@ -943,7 +1367,25 @@ export const mockCompanies: Company[] = [
         interests: ['SOC operations', 'Government security', 'Threat intelligence'],
         recentActivity: 'Protecting 10,000+ endpoints, expanding government contracts',
         tenure: '9 years (founded 2016)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-03',
+            content: 'SecurityOps Center protects 10,000+ endpoints with 24/7 monitoring! Our government contracts prove the value of SOC-as-a-service.',
+            engagement: '892 likes, 167 comments'
+          },
+          {
+            date: '2025-10-25',
+            content: 'After 25 years at Department of Defense, I brought that same security rigor to businesses. 24/7 SOC monitoring for everyone.',
+            engagement: '678 likes, 123 comments'
+          },
+          {
+            date: '2025-10-15',
+            content: '10,000+ endpoints protected, 24/7 monitoring, government-grade security. That\'s what every business deserves.',
+            engagement: '534 likes, 89 comments'
+          }
+        ]
+      },,
       {
         id: '32-cfo',
         name: 'Patricia Anderson',
@@ -975,7 +1417,25 @@ export const mockCompanies: Company[] = [
         interests: ['Fraud detection AI', 'E-commerce security', 'Real-time ML'],
         recentActivity: 'Announced Stripe partnership, blocking $500M+ fraud annually',
         tenure: '6 years (founded 2019)'
-      },
+,
+        linkedInActivity: [
+          {
+            date: '2025-11-02',
+            content: 'FraudShield AI partnership with Stripe is live! We now block $500M+ in fraud annually with 99.2% accuracy. Real-time fraud detection at scale.',
+            engagement: '1,345 likes, 267 comments'
+          },
+          {
+            date: '2025-10-24',
+            content: 'Our ML model achieves 99.2% accuracy in fraud detection. After years at PayPal\'s fraud team, I knew AI could transform fraud prevention.',
+            engagement: '923 likes, 178 comments'
+          },
+          {
+            date: '2025-10-14',
+            content: 'Blocking $500M+ in fraud annually. E-commerce deserves better fraud protection. That\'s what we built at FraudShield.',
+            engagement: '734 likes, 134 comments'
+          }
+        ]
+      },,
       {
         id: '33-cfo',
         name: 'Eric Johnson',
