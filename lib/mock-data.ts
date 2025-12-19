@@ -955,7 +955,7 @@ export const mockCompanies: Company[] = [
       },
       {
         id: '32-coo',
-        name: 'Michael Torres',
+        name: 'Robert Martinez',
         title: 'COO',
         background: 'Former Director at Mandiant, SOC operations expert',
         interests: ['Security operations', 'Incident response', 'Team scaling'],
