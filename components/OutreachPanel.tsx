@@ -43,10 +43,11 @@ export function OutreachPanel({ company, userContexts, onClose }: OutreachPanelP
     };
 
     const options: Array<{ value: string, label: string, name: string, title: string }> = [];
+    const addedRecipientIds = new Set<string>();
 
     Object.entries(recipientMap).forEach(([value, { titles, label }]) => {
       const recipient = company.management.find(m =>
-        titles.some(title => m.title.includes(title))
+        !addedRecipientIds.has(m.id) && titles.some(title => m.title.includes(title))
       );
 
       if (recipient) {
@@ -56,6 +57,7 @@ export function OutreachPanel({ company, userContexts, onClose }: OutreachPanelP
           name: recipient.name,
           title: recipient.title
         });
+        addedRecipientIds.add(recipient.id);
       }
     });
 
