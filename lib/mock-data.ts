@@ -46,7 +46,24 @@ export const mockCompanies: Company[] = [
         background: 'Former VP of Product at Salesforce, MBA from Stanford GSB',
         interests: ['Enterprise SaaS scaling', 'International expansion', 'Product-led growth'],
         recentActivity: 'Keynote at SaaStr Annual on "Building for Enterprise Scale"',
-        tenure: '5 years (founded 2020)'
+        tenure: '5 years (founded 2020)',
+        linkedInActivity: [
+          {
+            date: '2025-11-15',
+            content: 'Excited to announce our expansion into European markets! Our mission to transform enterprise workflows is going global. Looking forward to connecting with teams in London, Paris, and Berlin.',
+            engagement: '243 likes, 47 comments'
+          },
+          {
+            date: '2025-11-08',
+            content: 'Just wrapped up an incredible SaaStr Annual. Key takeaway: Enterprise customers don\'t just buy software—they buy transformation. Grateful to share our learnings on building for scale.',
+            engagement: '189 likes, 32 comments'
+          },
+          {
+            date: '2025-10-28',
+            content: 'Hiring is our #1 priority right now. We\'re looking for 30+ engineers who are passionate about enterprise SaaS and want to solve hard problems at scale. DM me if interested!',
+            engagement: '156 likes, 64 comments'
+          }
+        ]
       },
       {
         id: '1-cfo',
@@ -78,7 +95,24 @@ export const mockCompanies: Company[] = [
         background: 'Former Chief Medical Officer at Mass General, MD from Johns Hopkins',
         interests: ['Healthcare IT interoperability', 'Value-based care', 'Clinical workflow optimization'],
         recentActivity: 'Published whitepaper on AI in hospital operations, speaking at HIMSS',
-        tenure: '6 years (founded 2019)'
+        tenure: '6 years (founded 2019)',
+        linkedInActivity: [
+          {
+            date: '2025-11-20',
+            content: 'Thrilled to share our new whitepaper on AI-driven hospital operations. We analyzed data from 50+ hospital systems and the results are transformative. Download link in comments.',
+            engagement: '312 likes, 89 comments'
+          },
+          {
+            date: '2025-11-10',
+            content: 'Healthcare interoperability isn\'t just a technical challenge—it\'s a patient care imperative. Proud that our platform now serves 50+ hospital systems, improving outcomes for millions of patients.',
+            engagement: '276 likes, 54 comments'
+          },
+          {
+            date: '2025-11-01',
+            content: 'Looking forward to speaking at HIMSS next month. Will be discussing how value-based care models are driving innovation in healthcare analytics. See you there!',
+            engagement: '198 likes, 41 comments'
+          }
+        ]
       },
       {
         id: '2-cfo',
@@ -110,7 +144,24 @@ export const mockCompanies: Company[] = [
         background: 'Former Operations Director at UPS, passionate about sustainability',
         interests: ['Supply chain sustainability', 'EV fleet management', 'Last-mile optimization'],
         recentActivity: 'Featured in Forbes "30 Under 30" for Supply Chain, Series C announcement',
-        tenure: '7 years (founded 2018)'
+        tenure: '7 years (founded 2018)',
+        linkedInActivity: [
+          {
+            date: '2025-11-18',
+            content: 'Honored to be named to Forbes 30 Under 30 for Supply Chain! This recognition belongs to our entire team who\'s working tirelessly to make logistics more sustainable. The future is electric! ⚡',
+            engagement: '892 likes, 156 comments'
+          },
+          {
+            date: '2025-11-12',
+            content: 'Big news: We just closed our $80M Series C led by Sequoia! This funding will help us expand to 15 new markets and accelerate our mission to electrify last-mile delivery. Excited for what\'s next!',
+            engagement: '1,243 likes, 234 comments'
+          },
+          {
+            date: '2025-10-30',
+            content: 'Our carbon tracking API is now live! Companies can now monitor and reduce their delivery carbon footprint in real-time. Sustainability starts with measurement.',
+            engagement: '567 likes, 98 comments'
+          }
+        ]
       },
       {
         id: '3-cfo',

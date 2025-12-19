@@ -20,6 +20,12 @@ export interface NewsItem {
   source: string;
 }
 
+export interface LinkedInPost {
+  date: string;
+  content: string;
+  engagement?: string; // e.g., "143 likes, 28 comments"
+}
+
 export interface ManagementMember {
   id: string;
   name: string;
@@ -29,6 +35,7 @@ export interface ManagementMember {
   interests?: string[]; // Professional interests, focus areas
   recentActivity?: string; // Recent posts, speaking engagements, etc.
   tenure?: string; // How long at the company
+  linkedInActivity?: LinkedInPost[]; // Recent LinkedIn posts
 }
 
 export interface StrategicSignal {

@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Copy, Edit2, Check, RefreshCw } from 'lucide-react';
+import { Copy, Edit2, Check, RefreshCw, Wand2, Minimize2, FileText, Zap } from 'lucide-react';
 import { toast } from 'sonner';
 import { HighlightedText } from './HighlightedText';
 
@@ -15,14 +15,16 @@ interface EmailDraftCardProps {
   onCopy: () => void;
   onEdit: (draftId: string, newSubject: string, newBody: string) => void;
   onRegenerateSelection?: (selectedText: string) => void;
+  onToneAdjust?: (draftId: string, adjustment: 'formal' | 'casual' | 'shorten' | 'detail') => void;
   angleIcon?: React.ReactNode;
 }
 
-export function EmailDraftCard({ draft, onCopy, onEdit, onRegenerateSelection, angleIcon }: EmailDraftCardProps) {
+export function EmailDraftCard({ draft, onCopy, onEdit, onRegenerateSelection, onToneAdjust, angleIcon }: EmailDraftCardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedSubject, setEditedSubject] = useState(draft.subject);
   const [editedBody, setEditedBody] = useState(draft.body);
   const [copied, setCopied] = useState(false);
+  const [isAdjusting, setIsAdjusting] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(`Subject: ${draft.subject}\n\n${draft.body}`);
@@ -45,6 +47,25 @@ export function EmailDraftCard({ draft, onCopy, onEdit, onRegenerateSelection, a
     if (selectedText && selectedText.length > 10 && onRegenerateSelection) {
       // Show regenerate option for selected text
       console.log('Selected text:', selectedText);
+    }
+  };
+
+  const handleToneAdjust = async (adjustment: 'formal' | 'casual' | 'shorten' | 'detail') => {
+    if (!onToneAdjust) return;
+    setIsAdjusting(true);
+    try {
+      await onToneAdjust(draft.id, adjustment);
+      const adjustmentLabels = {
+        formal: 'More formal',
+        casual: 'More casual',
+        shorten: 'Shortened',
+        detail: 'More detailed'
+      };
+      toast.success(`${adjustmentLabels[adjustment]} version generated!`);
+    } catch (error) {
+      toast.error('Failed to adjust tone');
+    } finally {
+      setIsAdjusting(false);
     }
   };
 
@@ -140,6 +161,55 @@ export function EmailDraftCard({ draft, onCopy, onEdit, onRegenerateSelection, a
           </>
         )}
       </CardContent>
+
+      {/* Quick Tone Adjustment Buttons */}
+      {!isEditing && onToneAdjust && (
+        <div className="border-t px-4 py-2 bg-muted/20">
+          <div className="flex items-center gap-1">
+            <span className="text-[10px] text-muted-foreground mr-1">Quick adjust:</span>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={() => handleToneAdjust('formal')}
+              disabled={isAdjusting}
+              className="h-6 text-[10px] px-2 py-0"
+            >
+              <Wand2 className="h-3 w-3 mr-1" />
+              Formal
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={() => handleToneAdjust('casual')}
+              disabled={isAdjusting}
+              className="h-6 text-[10px] px-2 py-0"
+            >
+              <Zap className="h-3 w-3 mr-1" />
+              Casual
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={() => handleToneAdjust('shorten')}
+              disabled={isAdjusting}
+              className="h-6 text-[10px] px-2 py-0"
+            >
+              <Minimize2 className="h-3 w-3 mr-1" />
+              Shorten
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={() => handleToneAdjust('detail')}
+              disabled={isAdjusting}
+              className="h-6 text-[10px] px-2 py-0"
+            >
+              <FileText className="h-3 w-3 mr-1" />
+              Detail
+            </Button>
+          </div>
+        </div>
+      )}
     </Card>
   );
 }
